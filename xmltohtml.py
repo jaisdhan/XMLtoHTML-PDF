@@ -17,9 +17,18 @@ def xml_to_html(xml_file, html_file):
     html_root = Element('html')
     body = SubElement(html_root, 'body')
 
+    title_in_xml= root.find("title")
+    title = SubElement(body, 'h1')
+    title.text = title_in_xml.text
+
+
+    SubElement(title, 'br')
+
     # Convert XML elements to HTML
     for food in root.findall('food'):
         food_div = SubElement(body, 'div')
+
+        abreak = SubElement(food_div, 'br')
 
         name = SubElement(food_div, 'p')
         name.text = f"Name: {food.find('name').text}"
